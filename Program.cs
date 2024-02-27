@@ -8,7 +8,8 @@ class Program
         //Samohlasky();
         //Pocitadlo();
         //MinMax();
-        ZadejDokud();
+        //ZadejDokud();
+        binConvert();
     }
 
     static void Test()
@@ -113,34 +114,73 @@ class Program
 
     static void ZadejDokud()
     {
-        int c = 0;
-        int[] arr = new int[100];
+        int c;
         int i = 0;
+        double vysl = 0;
         do
         {
             Console.Write("Zadej: ");
             c = int.Parse(Console.ReadLine());
-            arr[i] = c;
-            i++;
+            if(c != 0) i++;
+            vysl = avg(c, i);
         } while (c != 0);
+        Console.Write(vysl);
+        Console.Read();
+    }
+    static int sum = 0;
 
-        avg(arr);
+    static double avg(int num, int i)
+    {
+        sum += num;
+        double avg = (double)sum / (double)i;
+        return avg;
     }
 
-    static void avg(int []arr)
+    static void binConvert()
     {
-        int sum = 0;
-        int c = 0;
-        foreach(int i in arr)
+        Console.Write("Zadej velikost pole: ");
+        int[] arr = new int[int.Parse(Console.ReadLine())];
+
+        Random r = new Random();
+        for (int i = 0; i < arr.Length; i++)
         {
-            if (i < 10 && i > 0) {
-                sum += i;
-                c++;
-            };
+            arr[i] = r.Next(10);
         }
 
-        double avg = (double)sum / (double)c;
-        Console.WriteLine("Průměr je " + avg);
+        binDetect(arr);
+    }
+
+    static void binDetect(int []arr)
+    {
+        int tmp = arr.Length - 1;
+        int[] bin = new int[arr.Length];
+
+        Console.Write("Vygenerovaná čísla: ");
+
+        for (int i = arr.Length - 1; i >= 0; i--)
+        {
+            bin[i] = 3;
+            Console.Write(arr[i] + ", ");
+            if(arr[i] == 0 || arr[i] == 1)
+            {
+                bin[tmp] = arr[i];
+                tmp--;
+            }
+        }
+
+        Console.Write("Vygenerovaná čísla bin: ");
+        int coef = 1, sum = 0;
+        for(int i = arr.Length - 1; i >= 0; i--)
+        {
+            if(bin[i] != 3)
+            {
+                Console.Write(bin[i] + ", ");
+                sum += bin[i] * coef;
+                coef *= 2;
+            }
+        }
+
+        Console.WriteLine("Bin převedeno do dec: " + sum);
         Console.ReadLine();
     }
 
