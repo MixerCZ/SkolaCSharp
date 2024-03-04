@@ -1,16 +1,64 @@
 ﻿using System;
 
+class Text
+{
+    public int pocetSamohlasek(string text)
+    {
+        text = text.ToLower();
+        int samo = 0;
+        for (int i = 0; i < text.Length; i++)
+            if (text[i] == 'a' || text[i] == 'e' || text[i] == 'i' || text[i] == 'o' || text[i] == 'u' || text[i] == 'y') samo++;
+        return samo;
+    }
+}
+
 class Program
 {
     static void Main()
     {
-        //Test();
-        //Samohlasky();
-        //Pocitadlo();
-        //MinMax();
-        //ZadejDokud();
-        binConvert();
+        Samohlasky();
     }
+    static void Samohlasky()
+    {
+        Console.Write("Napiš slovo: ");
+        string str = Console.ReadLine();
+        Console.WriteLine("V tomto slově je " + new Text().pocetSamohlasek(str) + " samohlásek");
+        Console.ReadLine();
+    }
+
+    /* static void Caesar()
+     {
+         Console.Write("Zadej slovo: ");
+
+         string slovo = Console.ReadLine();
+
+         Console.Write("Zadej posun: ");
+         int posun = int.Parse(Console.ReadLine());
+
+         string[] abeceda = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+
+         char[] noveslovo = {'a', 'b', 'c', 'd'};
+
+         for(int i = 0; i < slovo.Length; i++)
+         {
+             for(int j = 0; j < 26; j++)
+             {
+                 if(slovo[i].Equals(abeceda[j]))
+                 {
+                     int pozice = j;
+                     if((j+posun) >= 26) pozice = j-1;
+                     noveslovo[i] = abeceda[pozice];
+                 }
+             }
+         }
+
+         Console.Write("Nové slovo je ");
+         for(int i = 0; i < noveslovo.Length; i++)
+         {
+             Console.Write(noveslovo[i]);
+         }
+         Console.ReadLine();
+     }*/
 
     static void Test()
     {
@@ -32,18 +80,6 @@ class Program
             j++;
         }
         Console.Read();
-    }
-
-    static void Samohlasky()
-    {
-        Console.Write("Napiš slovo: ");
-        string str = Console.ReadLine();
-        int samo = 0;
-        str = str.ToLower();
-        for(int i = 0; i < str.Length; i++)
-            if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' || str[i] == 'y') samo++;
-        Console.WriteLine("V tomto slově je " + samo + " samohlásek");
-        Console.ReadLine();
     }
 
     static void Pocitadlo()
@@ -184,5 +220,12 @@ class Program
         Console.ReadLine();
     }
 
+}
+class Trida
+{
+    public void Metoda()
+    {
+        Console.WriteLine("Ahoj");
+    }
 }
 
