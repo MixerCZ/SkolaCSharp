@@ -16,7 +16,8 @@ class Program
 {
     static void Main()
     {
-        Samohlasky();
+        //Samohlasky();
+        Caesar();
     }
     static void Samohlasky()
     {
@@ -26,7 +27,7 @@ class Program
         Console.ReadLine();
     }
 
-    /* static void Caesar()
+     static void Caesar()
      {
          Console.Write("Zadej slovo: ");
 
@@ -35,11 +36,11 @@ class Program
          Console.Write("Zadej posun: ");
          int posun = int.Parse(Console.ReadLine());
 
-         string[] abeceda = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+         char[] abeceda = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 
-         char[] noveslovo = {'a', 'b', 'c', 'd'};
+        char[] noveslovo = new char[20];
 
-         for(int i = 0; i < slovo.Length; i++)
+        for (int i = 0; i < slovo.Length; i++)
          {
              for(int j = 0; j < 26; j++)
              {
@@ -47,7 +48,7 @@ class Program
                  {
                      int pozice = j;
                      if((j+posun) >= 26) pozice = j-1;
-                     noveslovo[i] = abeceda[pozice];
+                     noveslovo[i] = abeceda[pozice+posun];
                  }
              }
          }
@@ -58,7 +59,7 @@ class Program
              Console.Write(noveslovo[i]);
          }
          Console.ReadLine();
-     }*/
+     }
 
     static void Test()
     {
