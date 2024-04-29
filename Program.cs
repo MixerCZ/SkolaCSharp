@@ -14,11 +14,63 @@ class Text
 
 class Program
 {
+
     static void Main()
     {
         //Samohlasky();
-        Caesar();
+        //Caesar();
+        nahodnePole();
     }
+
+    static void nahodnePole()
+    {
+        Console.Title = "Hlavní nabídka";
+        Console.WriteLine("Bin to dec (1)");
+        Console.WriteLine("Dec to bin (2)");
+        Console.Write("Zadej výběr: ");
+        int choice = int.Parse(Console.ReadLine());
+        if(choice < 1 || choice > 2)
+        {
+            Console.WriteLine("CHYBA");
+            Console.WriteLine("Pro pokračování stiskni ENTER");
+            Console.ReadLine();
+            Console.Clear();
+            nahodnePole();
+        }
+
+        if(choice == 1)
+        {
+            Console.Clear();
+            Console.Title = "Převod z bin na dec";
+            Console.Write("Zadej binární číslo: ");
+            string bin = Console.ReadLine();
+            int mocnina = 1;
+            int sum = 0;
+            int []binArr = new int[bin.Length];
+
+            for(int i = 0; i < bin.Length; i++)
+            {
+                binArr[i] = int.Parse(bin[i].ToString());
+                Console.Write(binArr[i]);
+            }
+
+            for (int i = binArr.Length - 1; i >= 0; i--)
+            {
+                sum += binArr[i] * mocnina;
+                mocnina *= 2;
+            }
+
+            Console.WriteLine("Desítkové číslo: " + sum);
+        }
+
+        if (choice == 2)
+        {
+
+        }
+
+        Console.ReadLine();
+    }
+
     static void Samohlasky()
     {
         Console.Write("Napiš slovo: ");
